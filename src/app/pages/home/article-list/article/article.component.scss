@@ -1,0 +1,13 @@
+:host ::ng-deep{
+  .p-card{
+    width: 250px;
+    border-radius: 4px;
+    margin: 10px;
+    display: flex;
+  }
+  .img--wrapper{
+    border-radius: 4px 4px 0 0;
+    width: 250px;
+    height: 200px;
+  }
+}

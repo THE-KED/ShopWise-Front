@@ -1,0 +1,17 @@
+<p-card>
+  <ng-template #header>
+<!--    <img alt="Card" class="img&#45;&#45;wrapper" src="https://primefaces.org/cdn/primeng/images/card-ng.jpg"/>-->
+    <img alt="Card" class="img--wrapper" src="{{article.image_url}}"/>
+  </ng-template>
+  <ng-template #title> {{article.description}} </ng-template>
+  <ng-template #subtitle>{{article.source}}</ng-template>
+  <p>
+    {{article.price}}
+  </p>
+  <ng-template #footer>
+<!--    <div class="flex gap-4 mt-1">-->
+<!--      <p-button label="Cancel" severity="secondary" class="w-full" [outlined]="true" styleClass="w-full" />-->
+<!--      <p-button label="Save" class="w-full" styleClass="w-full" />-->
+<!--    </div>-->
+  </ng-template>
+</p-card>
