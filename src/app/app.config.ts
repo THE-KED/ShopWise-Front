@@ -6,12 +6,15 @@ import {providePrimeNG} from 'primeng/config';
 import {provideAnimationsAsync} from '@angular/platform-browser/animations/async';
 import Aura from '@primeng/themes/aura';
 import {MyPreset} from '../mytheme1';
-import {provideHttpClient} from '@angular/common/http';
+import {provideHttpClient, withInterceptors} from '@angular/common/http';
+import {loaderInterceptor} from './shareds/loader/services/loader.interceptor';
 
 
 export const appConfig: ApplicationConfig = {
   providers: [provideZoneChangeDetection({ eventCoalescing: true }),
-    provideHttpClient(),
+    provideHttpClient(
+      withInterceptors([loaderInterceptor])
+    ),
     provideAnimationsAsync(),
     providePrimeNG({
       ripple: true,

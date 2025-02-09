@@ -21,12 +21,12 @@ import {ArticleService} from '../article-list/service/article.service';
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class SearchComponent {
-  product!:string;
+  product:string="";
 
   constructor(private articleService: ArticleService) {
   }
   find(){
-    console.log("find");
+    console.log("find",this.product);
     this.articleService.findProduct(this.product);
   }
 }

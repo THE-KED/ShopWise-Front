@@ -32,3 +32,9 @@ h5{
 app-article-list{
   width: 100%;
 }
+.search--wrapper{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
