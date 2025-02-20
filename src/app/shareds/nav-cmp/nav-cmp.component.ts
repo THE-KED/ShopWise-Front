@@ -1,6 +1,7 @@
-import {Component, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import {Component, CUSTOM_ELEMENTS_SCHEMA, EventEmitter, Output} from '@angular/core';
 import {Button} from 'primeng/button';
 import {Toolbar} from 'primeng/toolbar';
+import {AuthService} from '../AuthModule/auth.service';
 
 @Component({
   selector: 'app-nav-cmp',
@@ -15,4 +16,23 @@ import {Toolbar} from 'primeng/toolbar';
 })
 export class NavCmpComponent {
 
+  constructor(public authSer:AuthService) {
+  }
+
+  @Output()
+  inFormEvent = new EventEmitter<boolean>();
+  @Output()
+  onFormEvent = new EventEmitter<boolean>();
+
+  signIn() {
+    this.inFormEvent.emit(true);
+  }
+
+  signOn() {
+    this.onFormEvent.emit(true);
+  }
+
+  signOut() {
+    this.authSer.signOut().subscribe();
+  }
 }

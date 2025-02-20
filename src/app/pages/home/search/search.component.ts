@@ -5,6 +5,8 @@ import {FormsModule} from '@angular/forms';
 import {InputText} from 'primeng/inputtext';
 import {Button} from 'primeng/button';
 import {ArticleService} from '../article-list/service/article.service';
+import {tap} from 'rxjs';
+import {HistoryService} from '../history/services/history.service';
 
 @Component({
   selector: 'app-search',
@@ -22,11 +24,26 @@ import {ArticleService} from '../article-list/service/article.service';
 })
 export class SearchComponent {
   product:string="";
-
-  constructor(private articleService: ArticleService) {
+  disable=false;
+  constructor(private articleService: ArticleService,private historyService: HistoryService) {
   }
   find(){
     console.log("find",this.product);
-    this.articleService.findProduct(this.product);
+    this.articleService.findProduct(this.product)
+      .pipe(
+        tap(
+          {
+            subscribe: () => this.disable=true, // Action au début
+            next: () => {
+              console.log("Données reçues");
+              this.historyService.add(this.product); // Ajoute la recherche dans l'historique'
+            },// Optionnel, si tu veux suivre les valeurs
+            finalize: () => this.disable=false, // Action à la fin
+          }
+        )
+      )
+      .subscribe(
+      data => this.articleService.next()
+    );
   }
 }

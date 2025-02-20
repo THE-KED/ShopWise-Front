@@ -1,7 +1,9 @@
-<p-card>
+<p-card (click)="goToUrl()">
   <ng-template #header>
-    <div class="wrapper img--contenair">
-      <img alt="{{article.description}}" class="img--wrapper" src="{{article.imageURL}}"/>
+    <div class="head">
+      <div class="wrapper img--contenair">
+        <img alt="{{article.description}}" class="img--wrapper" src="{{article.imageURL}}"/>
+      </div>
     </div>
   </ng-template>
   <ng-template #title>

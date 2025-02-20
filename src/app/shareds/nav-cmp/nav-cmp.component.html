@@ -11,7 +11,12 @@
     <p-button class="btn" label="Tarifs" text plain />
   </ng-template>
   <ng-template #end>
-    <p-button class="auth--btn" label="Se connecter" variant="text" icon="pi pi-user" />
-    <p-button label="S'inscrire" icon="pi pi-user" />
+    @if (!authSer.isAuth){
+      <p-button class="auth--btn" label="Se connecter" variant="text" icon="pi pi-user" (click)="signIn()"/>
+      <p-button label="S'inscrire" icon="pi pi-user" (click)="signOn()"/>
+    } @else {
+      {{authSer.username}}
+      <p-button class="logout--btn" severity="danger" label="Déconnexion" icon="pi pi-power-off" (click)="signOut()"/>
+    }
   </ng-template>
 </p-toolbar>

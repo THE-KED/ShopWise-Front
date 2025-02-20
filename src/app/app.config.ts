@@ -4,17 +4,21 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import {providePrimeNG} from 'primeng/config';
 import {provideAnimationsAsync} from '@angular/platform-browser/animations/async';
-import Aura from '@primeng/themes/aura';
 import {MyPreset} from '../mytheme1';
 import {provideHttpClient, withInterceptors} from '@angular/common/http';
 import {loaderInterceptor} from './shareds/loader/services/loader.interceptor';
+import {MessageService} from 'primeng/api';
+import {ToastInterceptor} from './shareds/toast/services/toast.interceptor';
+import {provideAnimations} from '@angular/platform-browser/animations';
 
 
 export const appConfig: ApplicationConfig = {
   providers: [provideZoneChangeDetection({ eventCoalescing: true }),
+    MessageService,
     provideHttpClient(
-      withInterceptors([loaderInterceptor])
+      withInterceptors([loaderInterceptor,ToastInterceptor])
     ),
+    provideAnimations(),
     provideAnimationsAsync(),
     providePrimeNG({
       ripple: true,

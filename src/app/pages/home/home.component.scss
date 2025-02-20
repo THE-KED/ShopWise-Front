@@ -38,3 +38,16 @@ app-article-list{
   align-items: center;
   justify-content: center;
 }
+
+.main{
+  display: flex;
+  align-content: flex-start;
+}
+.wrapper--history{
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  display: flex;
+  background: #FFFFFF;
+  border-right: 1px solid #d5d5d5 ;
+}

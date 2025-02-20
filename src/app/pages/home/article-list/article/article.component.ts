@@ -20,4 +20,8 @@ export class ArticleComponent {
 
   constructor() {
   }
+
+  goToUrl() {
+    window.open(this.article.productURL, "_blank");
+  }
 }
